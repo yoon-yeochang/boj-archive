@@ -1,52 +1,34 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        int a = 0;
-        for(int i = 0; i < 4; i++)
-        {
-            a += scanner.nextInt();
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        for (int i = 0; i < 3; i++) {
+            int n = 0;
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < 4; j++) {
+                if (Integer.parseInt(st.nextToken()) == 0) {
+                    n++;
+                }
+            }
+            if (n == 0) {
+                sb.append("E").append("\n");
+            } else if (n == 1) {
+                sb.append("A").append("\n");
+            } else if (n == 2) {
+                sb.append("B").append("\n");
+            } else if (n == 3) {
+                sb.append("C").append("\n");
+            } else if (n == 4) {
+                sb.append("D").append("\n");
+            }
         }
-        int b = 0;
-        for(int i = 0; i < 4; i++)
-        {
-            b += scanner.nextInt();
-        }
-        int c = 0;
-        for(int i = 0; i < 4; i++)
-        {
-            c += scanner.nextInt();
-        }
-        
-        play(a);
-        play(b);
-        play(c);
-        
-    }
-    private static void play(int n)
-    {
-        if(n == 3)
-        {
-            System.out.println("A");
-        }
-        if(n == 2)
-        {
-            System.out.println("B");
-        }
-        if(n == 1)
-        {
-            System.out.println("C");
-        }
-        if(n == 0)
-        {
-            System.out.println("D");
-        }
-        if(n == 4)
-        {
-            System.out.println("E");
-        }
+
+        System.out.println(sb);
     }
 }
