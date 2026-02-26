@@ -1,40 +1,34 @@
-
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int c = scanner.nextInt();
-        int money;
-        if((a == b) && (a == c))
-        {
-            money = 10000 + (a * 1000);
-        } else if((a == b) && (a != c))
-        {
-            money = 1000 + (a * 100);
-        } else if((a == c) && (a != b))
-        {
-            money = 1000 + (a * 100);
-        } else if((b == c) && (a != b))
-        {
-            money = 1000 + (b * 100);
-        } else
-        {
-            int max = a;
-            if(b > max)
-            {
-                max = b;
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+
+        if (a == b && b == c) {
+            sb.append(10000 + a * 1000);
+        } else if (a == b || a == c || b == c) {
+            if (a == b) {
+                sb.append(1000 + a * 100);
             }
-            if(c > max)
-            {
-                max = c;
+            if (a == c) {
+                sb.append(1000 + a * 100);
             }
-            money = max * 100;
+            if (b == c) {
+                sb.append(1000 + b * 100);
+            }
+        } else {
+            sb.append(Integer.max(Integer.max(a, b), c) * 100);
         }
-        System.out.println(money);
+
+        System.out.println(sb);
     }
 }
