@@ -1,21 +1,23 @@
-    
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        List<Integer> numbers = new ArrayList<>();
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int[] nums = new int[5];
         int sum = 0;
-        for(int i = 0; i < 5; i++)
-        {
-            int n = scanner.nextInt();
-            numbers.add(n);
-            sum += n;
+        for (int i = 0; i < 5; i++) {
+            nums[i] = Integer.parseInt(br.readLine());
+            sum += nums[i];
         }
-        Collections.sort(numbers);
-        System.out.println(sum / 5);
-        System.out.println(numbers.get(2));
+
+        Arrays.sort(nums);
+        sb.append(sum / 5).append("\n").append(nums[2]);
+
+        System.out.println(sb);
     }
 }
