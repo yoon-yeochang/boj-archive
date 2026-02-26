@@ -1,22 +1,26 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        List<Integer> numbers = new ArrayList<>();
-        
-        for(int i = 0; i < 3; i++)
-        {
-            numbers.add(scanner.nextInt());
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        Integer[] nums = new Integer[3];
+
+        for (int i = 0; i < 3; i++) {
+            nums[i] = Integer.parseInt(st.nextToken());
         }
-        
-        numbers.sort(null);
-        
-        for(Integer number : numbers)
-        {
-            System.out.print(number + " ");
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < 3; i++) {
+            sb.append(nums[i]).append(" ");
         }
+
+        System.out.println(sb);
     }
 }
