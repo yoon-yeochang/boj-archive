@@ -1,27 +1,28 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        int score = scanner.nextInt();
-        
-        if(score >= 90)
-        {
-            System.out.println("A");
-        } else if(score >= 80)
-        {
-            System.out.println("B");
-        } else if(score >= 70)
-        {
-            System.out.println("C");
-        } else if(score >= 60)
-        {
-            System.out.println("D");
-        } else
-        {
-            System.out.println("F");
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        int score = Integer.parseInt(st.nextToken());
+
+        if (score >= 90 && score <= 100) {
+            sb.append("A");
+        } else if (score >= 80 && score <= 89) {
+            sb.append("B");
+        } else if (score >= 70 && score <= 79) {
+            sb.append("C");
+        } else if (score >= 60 && score <= 69) {
+            sb.append("D");
+        } else {
+            sb.append("F");
         }
+
+        System.out.println(sb);
     }
 }
