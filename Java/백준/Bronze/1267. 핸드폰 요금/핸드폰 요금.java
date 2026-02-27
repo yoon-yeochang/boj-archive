@@ -1,49 +1,35 @@
-  
+
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        List<Integer> list = new ArrayList<>();
-        
-        for(int i = 0; i < n; i++)
-        {
-            list.add(scanner.nextInt());
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int sum1 = 0;
+        int sum2 = 0;
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            int time = Integer.parseInt(st.nextToken());
+            sum1 += 10 + (time / 30) * 10;
+            sum2 += 15 + (time / 60) * 15;
         }
-        
-        int y = 0;
-        for(int time : list)
-        {
-            int t = time / 30;
-            if(time % 30 >= 0)
-            {
-                t++;
-            }
-            y += (t * 10);
+
+        if (sum1 < sum2) {
+            sb.append("Y").append(" ").append(sum1);
+        } else if (sum1 > sum2) {
+            sb.append("M").append(" ").append(sum2);
+        } else {
+            sb.append("Y M").append(" ").append(sum1);
         }
-        int m = 0;
-        for(int time : list)
-        {
-            int t = time / 60;
-            if(time % 60 >= 0)
-            {
-                t++;
-            }
-            m += (t * 15);
-        }
-        
-        if(y > m)
-        {
-            System.out.println("M " + m);
-        } else if(y < m)
-        {
-            System.out.println("Y " + y);
-        } else
-        {
-            System.out.println("Y M " + y);
-        }
+
+        System.out.println(sb);
+
     }
 }
