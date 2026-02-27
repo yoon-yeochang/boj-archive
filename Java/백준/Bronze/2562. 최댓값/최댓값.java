@@ -1,19 +1,22 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
         List<Integer> list = new ArrayList<>();
-        
-        for(int i = 0; i < 9; i++)
-        {
-            list.add(scanner.nextInt());
+        for (int i = 0; i < 9; i++) {
+            list.add(Integer.parseInt(br.readLine()));
         }
         int max = Collections.max(list);
-        int index = list.indexOf(max);
-        System.out.println(max);
-        System.out.println(index + 1);
+        int n = list.indexOf(max);
+
+        sb.append(max).append("\n");
+        sb.append(n + 1);
+
+        System.out.println(sb);
     }
 }
