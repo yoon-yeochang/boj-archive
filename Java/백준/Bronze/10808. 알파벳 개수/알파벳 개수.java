@@ -1,26 +1,23 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        String word = scanner.nextLine();
-        String abcd = "abcdefghijklmnopqrstuvwxyz";
-        char[] w1 = word.toCharArray();
-        char[] w2 = abcd.toCharArray();
-        int[] len = new int[w2.length];
-        
-        for(int i = 0; i < w2.length; i++)
-        {
-            for(int j = 0; j < w1.length; j++)
-            {
-                if(w2[i] == w1[j])
-                {
-                    len[i] += 1;
-                }
-            }
-            System.out.print(len[i] + " ");
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        char[] string = br.readLine().toCharArray();
+        int[] arr = new int[10000];
+
+        for (int i = 0; i < string.length; i++) {
+            arr[string[i]]++;
         }
+
+        for (int i = 'a'; i <= 'z'; i++) {
+            sb.append(arr[i]).append(" ");
+        }
+
+        System.out.println(sb);
     }
 }
