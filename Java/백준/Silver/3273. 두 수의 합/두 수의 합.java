@@ -1,33 +1,38 @@
+import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner scanner = new Scanner(System.in);
-        
-        int n = scanner.nextInt();
+public class Main {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int n = Integer.parseInt(br.readLine());
         int[] arr = new int[n];
-        
-        for(int i = 0; i < n; i++)
-        {
-            arr[i] = scanner.nextInt();
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        
-        int x = scanner.nextInt();
+        Arrays.sort(arr);
+
+        int x = Integer.parseInt(br.readLine());
+
         int count = 0;
-        int[] arr1 = new int[1000001];
-        for(int i = 0; i < n; i++)
-        {
-            if(x - arr[i] >= 0 && x-arr[i] <= 1000000 && arr1[x-arr[i]] != 0)
-            {
+        int p = 0;
+        int q = n - 1;
+        while (p < q) {
+            if (arr[p] + arr[q] > x) {
+                q--;
+            } else if (arr[p] + arr[q] < x) {
+                p++;
+            } else {
                 count++;
-            } else
-            {
-                arr1[arr[i]]++;
+                p++;
+                q--;
             }
         }
-        
+
         System.out.println(count);
     }
 }
