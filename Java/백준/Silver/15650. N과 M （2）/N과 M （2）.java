@@ -5,7 +5,7 @@ public class Main {
 
     static int n;
     static int m;
-    static boolean isUsed[];
+    static int[] arr;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -16,7 +16,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        isUsed = new boolean[n+1];
+        arr = new int[m];
 
         func(1, 0);
 
@@ -27,22 +27,17 @@ public class Main {
     private static void func(int cur, int count) {
 
         if (count == m) {
-            for (int i = 1; i <= n; i++) {
-                if (isUsed[i])
-                    sb.append(i).append(" ");
+            for (int i = 0; i < m; i++) {
+                sb.append(arr[i]).append(" ");
             }
             sb.append("\n");
+
             return;
         }
 
-        if (cur > n) {
-            return;
+        for (int i = cur; i <= n; i++) {
+            arr[count] = i;
+            func(i + 1, count + 1);
         }
-
-        isUsed[cur] = true;
-        func(cur + 1, count + 1);
-
-        isUsed[cur] = false;
-        func(cur + 1, count);
     }
 }
